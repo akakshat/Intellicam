@@ -9,25 +9,10 @@ import { preview } from '../assets';
 import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
 
-const handleSubmit = () =>{
-
-
-}
-
-const handleChange = (e) =>{
-
-
-}
-
-const handleSurpriseMe = () =>{
-
-
-}
-
 const CreatePost = () => {
   // this is used to navigate back to the home page after the image generation
   const navigate = useNavigate();
-  const [form, setform] = useState(
+  const [form, setForm] = useState(
     {
       name : '',
       prompt: '',
@@ -37,6 +22,27 @@ const CreatePost = () => {
 
   const [generatingImg, setgeneratingImg] = useState(false);
   const [loading, setloading] = useState(false);
+
+const generateImage = () =>{
+
+
+}
+
+const handleSubmit = () =>{
+
+
+}
+
+const handleChange = (e) => 
+  setForm({ ...form, [e.target.name]: e.target.value });
+
+const handleSurpriseMe = () => 
+{
+  const randomPrompt = getRandomPrompt(form.prompt);
+  setForm({ ...form, prompt: randomPrompt });
+};
+
+
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -57,7 +63,7 @@ const CreatePost = () => {
           <FormField
             labelName="Prompt"
             type="text"
-            name="Prompt"
+            name="prompt"
             placeholder="A tree with a face made of rubber ducks..."
             value={form.prompt}
             handleChange={handleChange}
@@ -87,10 +93,32 @@ const CreatePost = () => {
               <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
                 <Loader />
               </div>
-            )}
-            
+            )} 
           </div>
         </div>
+
+        <div className="mt-5 flex gap-5">
+          <button
+          type = 'button'
+          onClick={generateImage}
+          className = "text-white bg-[#FBBA26] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+          {generatingImg ? "Generating..." : "Generate"}
+          </button>
+        </div>
+
+        <div className="mt-4 text-[#666e75] text-[14px]">
+          <p className="mt-2">Once you have generated the image you want, 
+            you can share it with others in the community.
+          </p>
+          <button
+            type="submit"
+            className="mt-3 text-white bg-[#ED771D] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            {loading ? 'Sharing...' : 'Share with the Community'}
+          </button>
+        </div>
+
       </form>
     </section>
   )

@@ -54,7 +54,7 @@ const Home = () => {
                 />
                 ):(
                 <RenderCards
-                  data={allPosts}
+                  data={[]}
                   title = "No Posts Found"
                 />)}
             </div>
