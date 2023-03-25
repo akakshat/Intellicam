@@ -27,7 +27,7 @@ const generateImage = async () =>{
   if(form.prompt){
     try {
       setGeneratingImg(true);
-      const response = await fetch('http://localhost:8081/api/v1/intel', 
+      const response = await fetch('http://localhost:8082/api/v1/intel', 
       {
         method: 'POST',
         headers: 
@@ -61,7 +61,7 @@ const generateImage = async () =>{
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:8081/api/v1/intel', {
+        const response = await fetch('http://localhost:8082/api/v1/intel', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
